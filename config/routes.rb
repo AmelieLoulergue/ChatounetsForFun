@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/create'
-  get 'users/new'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/destroy'
-  get 'users/update'
+
+  resources :users
+  resources :items
+
   devise_for :users
   root 'static_pages#home'
   resources :users
