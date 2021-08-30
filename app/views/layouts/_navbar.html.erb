@@ -11,20 +11,32 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+      <% if !user_signed_in? %>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            SIgn up / Sign in
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="<%= new_user_session_path %>" > Sign in </a></li>
+            <li><a class="dropdown-item" href="<%= new_user_registration_path %>">Sign up</a></li>
+          </ul>
+        </div>
+      <% else %>
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
+          My profil / Sign out
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <div class="dropdown-divider"></div>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" href="<%= users_show_path %>">My Profil</a></li>
+          <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
         </ul>
       </div>
+      <% end %>
+
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
+
     </ul>
   </div>
 </nav>
