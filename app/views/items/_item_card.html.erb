@@ -1,0 +1,20 @@
+<% @items.each do |item| %>
+  <div class="card item-card">
+    <img src=<%= item.image_url %> class="card-img-top" alt="ceci est un chat">
+    <div class="card-body">
+      <h5 class="card-title"><%= item.title %></h5>
+      <p class="card-text"><%= item.description %></p>
+      <p class="card-text"><%= item.price %></p>
+      <div class="card-btn">
+        <div class="buy-btn">
+          <a href="#" class="btn btn-primary">Je l'adopte !</a>
+        </div>
+        <div class="admin-btn">
+          <%= link_to 'détails', item_path(item.id), class:"btn btn-secondary"%>
+          <%= link_to 'Edit',  edit_item_path(item.id), class:"btn btn-primary"%>
+          <%= link_to 'Destroy', item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

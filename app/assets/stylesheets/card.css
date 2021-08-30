@@ -1,0 +1,23 @@
+.card-body{
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+}
+
+h5+.card-text{
+  overflow: scroll;
+}
+
+.card-btn{
+ margin-top:auto; 
+}
+
+.admin-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buy-btn > .btn{
+  width: 100%;
+  margin:5px 0;
+}
