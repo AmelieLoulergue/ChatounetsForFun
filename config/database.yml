@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: chatounets_production
-  username: chatounets
-  password: <%= ENV['CHATOUNETS_DATABASE_PASSWORD'] %>
