@@ -9,12 +9,9 @@
   <img src=<%=@item.image_url %>>
 </div>
 
-
 <a href="#" class="btn btn-primary">Je l'adopte !</a>
 
-
 <div>
-  <%= link_to 'détails', item_path(@item.id), class:"btn btn-secondary"%>
   <%= link_to 'Edit',  edit_item_path(@item.id), class:"btn btn-primary"%>
   <%= link_to 'Destroy', item_path(@item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
 </div>
