@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :users
   resources :items
+
   devise_for :users
   root 'static_pages#home'
   resources :users
