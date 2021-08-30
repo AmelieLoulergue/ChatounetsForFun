@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   root 'static_pages#home'
   devise_for :users
   resources :items
