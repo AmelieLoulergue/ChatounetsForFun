@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  # désactivé car semble s'appliquer sur la def index alors qu'il n'est pas dans la liste ci-dessous
   before_action :set_item, only: %i[ show edit update destroy ]
 
   # GET /items or /items.json
