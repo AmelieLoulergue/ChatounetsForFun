@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # désactivé car semble s'appliquer sur la def index alors qu'il n'est pas dans la liste ci-dessous
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :has_cart?
 
   # GET /items or /items.json
   def index
@@ -67,5 +68,11 @@ class ItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def item_params
       params.fetch(:item, {})
+    end
+
+    def has_cart?
+      if !Cart.find_by(user: current_user)
+        Cart.create(user: current_user)
+      end 
     end
 end
