@@ -17,8 +17,8 @@
             SIgn up / Sign in
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="<%= new_user_session_path %>" > Sign in </a></li>
-            <li><a class="dropdown-item" href="<%= new_user_registration_path %>">Sign up</a></li>
+            <li><%= link_to 'Connexion', new_user_session_path, class:"dropdown-item" %></li>
+            <li><%= link_to 'Inscription', new_user_registration_path, class:"dropdown-item" %></li>
           </ul>
         </div>
       <% else %>
@@ -27,7 +27,7 @@
           My profil / Sign out
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="<%= users_show_path %>">My Profil</a></li>
+          <li><%= link_to 'My profil', user_path(current_user.id), class:"dropdown-item" %></li>
           <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
         </ul>
       </div>
