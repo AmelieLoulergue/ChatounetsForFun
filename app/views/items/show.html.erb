@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+
+<h1><%= @item.title %></h1>
+<p><%= @item.description %></p>
+<span class="price"><%= @item.price %> €</span>
+
+<div>
+  <img src=<%=@item.image_url %>>
+</div>
+
+
+<a href="#" class="btn btn-primary">Je l'adopte !</a>
+
+
+<div>
+  <%= link_to 'détails', item_path(@item.id), class:"btn btn-secondary"%>
+  <%= link_to 'Edit',  edit_item_path(@item.id), class:"btn btn-primary"%>
+  <%= link_to 'Destroy', item_path(@item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
+</div>
+
+
+
+
 <%= link_to 'Back', items_path %>
