@@ -7,4 +7,6 @@ class Item < ApplicationRecord
   has_many :carts, through: :cart_items
   has_many :order_items, foreign_key: 'item_id'
   has_many :orders, through: :order_items
+  has_one_attached :image # active storage
+
 end
