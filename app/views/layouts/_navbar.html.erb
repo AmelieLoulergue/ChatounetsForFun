@@ -1,20 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="<%=root_path%>">Chatounets</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
       <% if !user_signed_in? %>
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            SIgn up / Sign in
+            Se connecter/S'inscrire
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><%= link_to 'Connexion', new_user_session_path, class:"dropdown-item" %></li>
@@ -24,19 +18,15 @@
       <% else %>
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          My profil / Sign out
+          Mon compte
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><%= link_to 'My profil', user_path(current_user.id), class:"dropdown-item" %></li>
+          <li><%= link_to 'Mon profil', user_path(current_user.id), class:"dropdown-item" %></li>
           <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
         </ul>
       </div>
+      <li><a class="nav-link" href="<%= cart_path(current_user.cart.id)%>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
       <% end %>
-
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-
     </ul>
   </div>
 </nav>

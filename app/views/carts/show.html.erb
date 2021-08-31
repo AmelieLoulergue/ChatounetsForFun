@@ -14,7 +14,7 @@
             <h1 class="card-title"> Mon panier </h1>
               <div class="card-text">
               <% @cart.items.each do |item|%>
-                <div class="card mb-3" style="max-width: 800px;">
+                <div class="card mb-3" style="max-width: 800px;", id="item-<%=item.id%>">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="<%=item.image_url%>" class="img-fluid rounded-start" alt="...">
@@ -27,24 +27,41 @@
                     </div>
                     <div class="col-md-2">
                       <div class="card-body">
-                        <h5 class="card-title">Prix</h5>
+                        <h5 class="card-title">Prix unitaire</h5>
                         <p class="card-text"><%= item.price%>€ </p>
+                        <h5 class="card-title">Prix total pour le produit <%= item.title %> </h5>
+                        <p class="card-text"><%= (item.price * @cartitems.find_by(item: item).quantity).to_f.round(2)%>€ </p>
                       </div>
-                      <%= link_to "Supprimer du panier", cart_path(item.id), :method => :delete %>
                     </div>
+                    <div class="row">
+                      <h5 class="card-title">Quantité</h5>
+                        <form action="<%=cart_path%>" method="post">
+                          <input type="hidden" name="_method" value="put" />
+                          <input type="hidden" name="item" value="<%=item.id%>" />
+                          <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+                          <input class="quantity w-50" min="1" name="quantity" value="<%=@cartitems.find_by(item: item).quantity%>" type="number" id="inputQuantity">
+                          <button type="submit" onclick="getInputValue();">Modifier la quantité</button>
+                        </form>
+                    </div>
+                      <%= link_to "Supprimer du panier", cart_path(current_user.cart.id, item:item), :method => :delete, remote: true %> <br/>
+                  </div> 
                   </div>
-                </div> 
-                <% @total += item.price %>
                 <%end%>
                 </div>
               </div>
             </div>
             <div class="card-text">
-            <h1 class:"text-align-left">TOTAL : <%= @total%>€ </h1>
+              <h1>TOTAL : <span id="total-price"><%= @total%></span>€ </h1>
             </div>
 
         </div>
       </div>
     </div>
+    <script>
+        function getInputValue(){
+            // Selecting the input element and get its value 
+            var inputVal = document.getElementById("inputQuantity").value;
+        }
+    </script>
   </body>
 </html>

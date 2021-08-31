@@ -1,0 +1,10 @@
+var sp1 = document.createElement("div")
+var sp1_content = document.createTextNode("Adopté !");
+sp1.appendChild(sp1_content)
+sp1.classList.add("text-primary", "text-center")
+console.log(sp1)
+var sp2 = document.getElementById("<%=@item.id%>")
+console.log(sp2)
+var parentDiv = sp2.parentNode
+parentDiv.replaceChild(sp1, sp2)
+document.getElementById("total-cart").innerHTML = "<%=@total_cart%>"
