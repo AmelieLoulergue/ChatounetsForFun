@@ -1,2 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+
+<h2>Bienvenue sur ton profil</h2>
+<p> Ton email: <%=@user.email%></p>
+<p><%= link_to 'Editer profil', edit_user_registration_path%></p>
