@@ -16,16 +16,16 @@
           </ul>
         </div>
       <% else %>
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Mon compte
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><%= link_to 'Mon profil', user_path(current_user.id), class:"dropdown-item" %></li>
-          <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
-        </ul>
-      </div>
-      <li><a class="nav-link" href="<%= cart_path(current_user.cart.id)%>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Mon compte
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><%= link_to 'Mon profil', user_path(current_user.id), class:"dropdown-item" %></li>
+            <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+        <li><a class="nav-link" href="<%= user_cart_path(current_user.id, current_user.cart.id) %>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
       <% end %>
     </ul>
   </div>

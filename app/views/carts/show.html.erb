@@ -35,7 +35,7 @@
                     </div>
                     <div class="row">
                       <h5 class="card-title">Quantité</h5>
-                        <form action="<%=cart_path%>" method="post">
+                        <form action="<%=user_cart_path%>" method="post">
                           <input type="hidden" name="_method" value="put" />
                           <input type="hidden" name="item" value="<%=item.id%>" />
                           <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
@@ -43,7 +43,7 @@
                           <button type="submit" onclick="getInputValue();">Modifier la quantité</button>
                         </form>
                     </div>
-                      <%= link_to "Supprimer du panier", cart_path(current_user.cart.id, item:item), :method => :delete, remote: true %> <br/>
+                      <%= link_to "Supprimer du panier", user_cart_path(current_user.id, current_user.cart.id,  item:item), :method => :delete, remote: true %> <br/>
                   </div> 
                   </div>
                 <%end%>
@@ -53,6 +53,8 @@
             <div class="card-text">
               <h1>TOTAL : <span id="total-price"><%= @total%></span>€ </h1>
             </div>
+
+            <%= render 'stripe' %>
 
         </div>
       </div>

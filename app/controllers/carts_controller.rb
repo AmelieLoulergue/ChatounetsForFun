@@ -5,6 +5,9 @@ class CartsController < ApplicationController
   
   def show
     @cartitems=CartItem.where(cart:@cart)
+
+    @amount = @cart.total_amount
+
   end
 
   def update 
@@ -47,6 +50,12 @@ class CartsController < ApplicationController
         sum += (item.price.to_f * @cartitems.find_by(item: item).quantity.to_f)
     end 
     @total = sum.to_f.round(2)
+    @cart.update(total_amount:@total)
+    puts "*"*40
+    puts @total
+    puts @cart.total_amount
+    puts "*"*40
+
   end
 
   def set_total_cart

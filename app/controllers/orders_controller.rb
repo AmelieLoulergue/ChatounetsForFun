@@ -21,17 +21,47 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    @order = Order.new(params.permit(:user_id))
+    @cart = Cart.find_by(user_id:@order.user.id)
+    @amount = @cart.total_amount
+
+    puts "*"*40
+    puts @amount 
+    puts "*"*40
+
+
+      begin
+      customer = Stripe::Customer.create({
+        email: params[:stripeEmail],
+        source: params[:stripeToken],
+      })
+    
+      charge = Stripe::Charge.create({
+        customer: customer.id,
+        amount: @amount,
+        description: 'Rails Stripe customer',
+        currency: 'eur',
+      })
+
+      @order.update(stripe_customer_id:customer.id)
+      @order.save
+
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to new_event_attendance_path
       end
-    end
+
+     
+    # respond_to do |format|
+    #   if @order.save
+    #     format.html { redirect_to @order, notice: "Order was successfully created." }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /orders/1 or /orders/1.json
@@ -64,6 +94,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(:user_id)
     end
 end
