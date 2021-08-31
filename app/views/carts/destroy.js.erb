@@ -1,0 +1,4 @@
+console.log(document.getElementById("item-<%=@item.id%>"))
+document.getElementById("item-<%=@item.id%>").remove()
+document.getElementById("total-cart").innerHTML = "<%=@total_cart%>"
+document.getElementById("total-price").innerHTML = "<%=@total%>"
