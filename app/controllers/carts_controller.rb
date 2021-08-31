@@ -12,6 +12,7 @@ class CartsController < ApplicationController
 
   def update 
     @item = Item.find(params[:item])
+    puts params
     if !@cart.items.include?(@item)
       CartItem.create(cart: @cart, item_id: params[:item], quantity: 1)
       @total_cart +=1
@@ -22,7 +23,7 @@ class CartsController < ApplicationController
     else 
       @cartitem=CartItem.find_by(cart:@cart, item:@item)
       @cartitem.update(quantity: params[:quantity])
-      redirect_to cart_path(@cart.id)
+      redirect_to user_cart_path(current_user.id,@cart.id)
     end 
   end 
 
@@ -31,7 +32,7 @@ class CartsController < ApplicationController
     @total -= @item.price
     @total_cart -=1
     respond_to do |format|
-      format.html { redirect_to cart_path(current_user.cart.id) }
+      format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
       format.js { }
     end
     CartItem.find_by(cart:@cart, item:@item).destroy

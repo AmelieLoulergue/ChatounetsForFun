@@ -25,6 +25,8 @@ class OrdersController < ApplicationController
     @order = Order.new(params.permit(:user_id))
     @cart = Cart.find_by(user_id:@order.user.id)
     @amount = @cart.total_amount
+    @order.total_amount = @amount
+
 
     puts "*"*40
     puts @amount 
@@ -44,8 +46,20 @@ class OrdersController < ApplicationController
         currency: 'eur',
       })
 
-      @order.update(stripe_customer_id:customer.id)
+      puts '🏄‍♂️'*60
+      @order.stripe_customer_id = customer.id
+      puts '🏄'*60
+      
+      
+
+      puts '🏄'*60
       @order.save
+      puts '🏄‍♀️'*60
+
+      @cart.items.each do |item|
+        OrderItem.create(item:item,order:@order)
+        CartItem.find_by(item:item,cart:@cart).destroy
+      end
 
       rescue Stripe::CardError => e
         flash[:error] = e.message

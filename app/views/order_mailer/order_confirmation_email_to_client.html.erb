@@ -2,7 +2,7 @@
 <p>Tu viens de commander un chaton !!! Il est en chemin</p>
 <p>Voici le résumé de ta commande :</p>
 <ul>
-  <% @order.items.each do |item| %>
+  <% @cart.items.each do |item| %>
     <li><%= item.title %>, <%= item.price %></li>
   <% end%>
   

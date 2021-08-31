@@ -3,7 +3,7 @@
 <p>Tu es fier de toi ?</p>
 <p>Voici le résumé de la commande de <%=@order.user.email %>% :</p>
 <ul>
-  <% @order.items.each do |item| %>
+  <% @cart.items.each do |item| %>
     <li><%= item.title %>, <%= item.price %></li>
   <% end%>
 </ul>
