@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_08_31_125529) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_125529) do
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
