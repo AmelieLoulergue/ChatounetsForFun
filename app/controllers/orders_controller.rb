@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
-    puts params
     @order = Order.find(params[:id])
   end
 
@@ -56,6 +55,9 @@ class OrdersController < ApplicationController
       OrderItem.create(item:item,order:@order)
       CartItem.find_by(item:item,cart:@cart).destroy
     end
+
+    flash[:success] = "Miaouuu! Votre petit chaton est en route !"
+    redirect_to user_order_path(@order.id)
     
     rescue Stripe::CardError => e
       flash[:error] = e.message
