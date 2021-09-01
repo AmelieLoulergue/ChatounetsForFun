@@ -12,19 +12,13 @@
 # ['users', 'items'].map {|tab| ActiveRecord::Base.connection.reset_pk_sequence!(tab)}
 
 # Seed sans recréation des Users (pour éviter l'envoi d'emails automatiques via devise)
-[Item].map {|tab| tab.destroy_all}
-['items'].map {|tab| ActiveRecord::Base.connection.reset_pk_sequence!(tab)}
+[OrderItem, CartItem, Item, Cart, Order].map {|tab| tab.destroy_all}
+['order_items', 'cart_items', 'items', 'carts', 'orders'].map {|tab| ActiveRecord::Base.connection.reset_pk_sequence!(tab)}
 
 10.times do
-  puts "coucou"
   item = Item.new(title:Faker::Games::Pokemon.name, description:Faker::Restaurant.review, price:rand(10000..100000).to_f/100)
-  puts item
   number = rand(1..4)
-  puts "coucou"
-  puts number
   item.image_url.attach(io: File.open("app/assets/images/chat#{number}.jpg"), filename: "chat#{number}.jpg")
-  puts "coucou"
-  puts item.image_url
   item.save
 end
 # , image_url:"https://source.unsplash.com/1600x900/?cat"

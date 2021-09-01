@@ -26,7 +26,7 @@
             <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
           </ul>
         </div>
-        <li><a class="nav-link" href="<%= user_cart_path(current_user.id, current_user.cart.id) %>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
+        <li><a class="nav-link" href="<%= user_cart_path(user_id:current_user.id, id:current_user.cart.id) %>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
       <% end %>
     </ul>
   </div>

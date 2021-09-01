@@ -24,18 +24,19 @@ class CartsController < ApplicationController
     else 
       @cartitem=CartItem.find_by(cart:@cart, item:@item)
       @cartitem.update(quantity: params[:quantity])
-      redirect_to user_cart_path(current_user.id,@cart.id)
+      redirect_to user_cart_path(user_id:current_user.id,id:@cart.id)
     end 
   end 
 
   def destroy
+
     if params[:item]
       @item = Item.find(params[:item])
       @cartitems=CartItem.where(cart:@cart)
       @total -= (@item.price * @cartitems.find_by(item: @item).quantity).to_f
       @total_cart -= 1
       respond_to do |format|
-        format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
+        format.html { redirect_to user_cart_path(user_id:current_user.id, id:current_user.cart.id) }
         format.js { }
       end
       CartItem.find_by(cart:@cart, item:@item).destroy
