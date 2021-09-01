@@ -5,10 +5,14 @@ class CartsController < ApplicationController
   
   def show
     @cartitems=CartItem.where(cart:@cart)
+
+    @amount = @cart.total_amount
+
   end
 
   def update 
     @item = Item.find(params[:item])
+    puts params
     if !@cart.items.include?(@item)
       CartItem.create(cart: @cart, item_id: params[:item], quantity: 1)
       @total_cart +=1
@@ -19,7 +23,7 @@ class CartsController < ApplicationController
     else 
       @cartitem=CartItem.find_by(cart:@cart, item:@item)
       @cartitem.update(quantity: params[:quantity])
-      redirect_to cart_path(@cart.id)
+      redirect_to user_cart_path(current_user.id,@cart.id)
     end 
   end 
 
@@ -29,7 +33,7 @@ class CartsController < ApplicationController
     @total -= (@item.price * @cartitems.find_by(item: @item).quantity).to_f
     @total_cart -= 1
     respond_to do |format|
-      format.html { redirect_to cart_path(current_user.cart.id) }
+      format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
       format.js { }
     end
     CartItem.find_by(cart:@cart, item:@item).destroy
@@ -48,6 +52,12 @@ class CartsController < ApplicationController
       sum += (item.price * @cartitems.find_by(item: item).quantity).to_f
     end 
     @total = sum.to_f.round(2)
+    @cart.update(total_amount:@total)
+    puts "*"*40
+    puts @total
+    puts @cart.total_amount
+    puts "*"*40
+
   end
 
   def set_total_cart

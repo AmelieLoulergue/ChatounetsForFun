@@ -1,17 +1,19 @@
-<p>Hello <%= @order.user.email %>!</p>
+<p>Hello <%= @cart.user.email %>!</p>
 <p>Tu viens de commander un chaton !!! Il est en chemin</p>
 <p>Voici le résumé de ta commande :</p>
 <ul>
-  <% @order.items.each do |item| %>
+  <% @cart.items.each do |item| %>
     <li><%= item.title %>, <%= item.price %></li>
   <% end%>
-  
+  <% @cart.items.each do |item| %>
+    <li>image à mettre</li>
+  <% end%>
 </ul>
 <p>Si tu n'as pas commandé de chaton, tu seras malgré tout débité.</p>
 <p>See you later alligator</p>
 <p>L'équipe Woov-Chatons</p>
 <br/>
 <p>Au fait, toi aussi, tu es jeune dynamique et beau gosse ? Alors rejoins l'équipe Woov !</p>
-<div style="width: 10rem; heigth: 15rem;">
+<div style="width: 3rem; heigth: 5rem; overflow:hidden;">
   <img style="object-fit: cover;" src="https://www.webengineering.fr/webengineering/www/webengineering/images/imagesQuiSommesNous/CHRETIEN_nb.jpg">
 </div>
