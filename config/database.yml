@@ -80,4 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: chatounets_production
+  database: chatounets_development
