@@ -3,6 +3,7 @@
     <table class="table">
         <thead>
           <tr>
+            <th scope="col">Numéro de commande</th>
             <th scope="col">Chaton adopté</th>
             <th scope="col">Montant TTC</th>
             <th scope="col"></th>
@@ -11,6 +12,7 @@
         <tbody>
         <% @order.items.each do |item| %>
           <tr>
+            <td>Order #<%= @order.id %></td>
             <td><%= item.title %></td>
             <td><%= item.price %> <a> € </a></td>
             <td> <%=link_to "Tu souhaites racheter ?", item_path(item.id), class:'btn btn-primary'%> </td>
