@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :items
   
-  resources :users, only: [:show, :edit, :update], path:'' do
-    resources :carts, path: "monpanier"
-    resources :orders, path: "mescommandes"
-  end
+  # resources :users, only: [:show, :edit, :update], path:'' do
+  #   resources :carts, path: "monpanier"
+  #   resources :orders, path: "mescommandes"
+  # end
 
   scope shallow_prefix: "user" do
   resources :users, only: [:show, :edit, :update] do
