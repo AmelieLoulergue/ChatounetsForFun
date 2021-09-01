@@ -1,7 +1,7 @@
 <p>Hello jojo !</p>
-<p>Tu viens de faire partir <%= @order.items.count %> petit(s) chaton(s) de plus dans la nature...</p>
+<p>Tu viens de faire partir <%= @cart.items.count %> petit(s) chaton(s) de plus dans la nature...</p>
 <p>Tu es fier de toi ?</p>
-<p>Voici le résumé de la commande de <%=@order.user.email %>% :</p>
+<p>Voici le résumé de la commande de <%=@cart.user.email %>% :</p>
 <ul>
   <% @cart.items.each do |item| %>
     <li><%= item.title %>, <%= item.price %></li>
@@ -9,6 +9,6 @@
 </ul>
 <br/>
 <p>Au fait, toi aussi, tu es jeune dynamique et beau gosse ? Alors viens faire du kite à Surrtainville !</p>
-<div style="width: 10rem; heigth: 15rem;">
+<div style="border:red 3px solid">
   <img style="object-fit: cover;" src="https://www.webengineering.fr/webengineering/www/webengineering/images/imagesQuiSommesNous/CHRETIEN_nb.jpg">
 </div>

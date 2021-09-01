@@ -56,6 +56,9 @@
 
             <%= render 'stripe' %>
 
+            <%# La ligne ci-dessous est à retirer à la mise en production finale %>
+            <%= link_to "bypass stripe", user_orders_path(current_user.id), method: :post, class:"btn btn-danger" %>
+
         </div>
       </div>
     </div>

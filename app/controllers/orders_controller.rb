@@ -27,45 +27,36 @@ class OrdersController < ApplicationController
     @amount = @cart.total_amount
     @order.total_amount = @amount
 
+    # STRIPE FONCTIONNE. POUR L'ISNTANT DESACTIV2 POUR NE PAS AVOIR À REPASSER À CHAQUE FOIS PAR LE PAIEMENT
+    begin
+    # customer = Stripe::Customer.create({
+    #   email: params[:stripeEmail],
+    #   source: params[:stripeToken],
+    # })
 
-    puts "*"*40
-    puts @amount 
-    puts "*"*40
+    # charge = Stripe::Charge.create({
+    #   customer: customer.id,
+    #   amount: @amount,
+    #   description: 'Rails Stripe customer',
+    #   currency: 'eur',
+    # })
 
+    # @order.stripe_customer_id = customer.id
 
-      begin
-      customer = Stripe::Customer.create({
-        email: params[:stripeEmail],
-        source: params[:stripeToken],
-      })
+    @order.save
+
+    OrderMailer.order_confirmation_email_to_client(@cart).deliver_now
+    OrderMailer.order_confirmation_email_to_admin(@cart).deliver_now
     
-      charge = Stripe::Charge.create({
-        customer: customer.id,
-        amount: @amount,
-        description: 'Rails Stripe customer',
-        currency: 'eur',
-      })
-
-      puts '🏄‍♂️'*60
-      @order.stripe_customer_id = customer.id
-      puts '🏄'*60
-      
-      
-
-      puts '🏄'*60
-      @order.save
-      puts '🏄‍♀️'*60
-
-      @cart.items.each do |item|
-        OrderItem.create(item:item,order:@order)
-        CartItem.find_by(item:item,cart:@cart).destroy
-      end
-
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to new_event_attendance_path
-      end
-
+    @cart.items.each do |item|
+      OrderItem.create(item:item,order:@order)
+      CartItem.find_by(item:item,cart:@cart).destroy
+    end
+    
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_event_attendance_path
+    end
      
     # respond_to do |format|
     #   if @order.save
