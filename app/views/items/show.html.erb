@@ -6,7 +6,7 @@
 <span class="price"><%= @item.price %> €</span>
 
 <div>
-  <img src=<%=@item.image_url %>>
+  <%= image_tag @item.image_url, alt: 'ceci est un chat' %>
 </div>
 
 <div class="buy-btn">

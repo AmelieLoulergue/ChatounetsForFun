@@ -1,6 +1,6 @@
 <% @items.each do |item| %>
   <div class="card item-card">
-    <img src=<%= item.image_url %> class="card-img-top" alt="ceci est un chat">
+    <%= image_tag item.image_url, alt: 'ceci est un chat', class:"card-img-top" %>
     <div class="card-body">
       <h5 class="card-title"><%= item.title %></h5>
       <p class="card-text"><%= item.description %></p>

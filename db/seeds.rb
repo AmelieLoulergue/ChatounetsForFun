@@ -16,9 +16,17 @@
 ['items'].map {|tab| ActiveRecord::Base.connection.reset_pk_sequence!(tab)}
 
 10.times do
-  item = Item.create(title:Faker::Games::Pokemon.name, description:Faker::Restaurant.review, price:rand(10000..100000).to_f/100, image_url:"https://source.unsplash.com/1600x900/?cat")
+  puts "coucou"
+  item = Item.new(title:Faker::Games::Pokemon.name, description:Faker::Restaurant.review, price:rand(10000..100000).to_f/100)
+  puts item
   number = rand(1..4)
-  item.image.attach(io: File.open("app/assets/images/chat#{number}.jpg"), filename: "chat#{number}.jpg")
+  puts "coucou"
+  puts number
+  item.image_url.attach(io: File.open("app/assets/images/chat#{number}.jpg"), filename: "chat#{number}.jpg")
+  puts "coucou"
+  puts item.image_url
+  item.save
 end
+# , image_url:"https://source.unsplash.com/1600x900/?cat"
 
 
