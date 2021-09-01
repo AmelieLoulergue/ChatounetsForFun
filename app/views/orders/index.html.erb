@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<h1>Tes commandes</h1>
-<% if @orders.length !=0 %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">N° de commande</th>
-        <th scope="col">Date</th>
-        <th scope="col">Montant TTC</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%=order.id%></td>
-        <td><%=order.created_at%></td>
-        <td><%= order.total_amount%> <a> € </a> </td>
-        <td> <%=link_to "Go detail", user_order_path(current_user.id, order.id), class:'btn btn-primary'%> </td>
-      </tr>
-      <%end%>
-    </tbody>
-  </table>
-<%else%>
+  <h1>Tes commandes</h1>
+  <% if @orders.length !=0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">N° de commande</th>
+          <th scope="col">Date</th>
+          <th scope="col">Montant TTC</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%=order.id%></td>
+            <td><%=order.created_at%></td>
+            <td><%= order.total_amount%> <a> € </a> </td>
+            <td> <%=link_to "Go detail", user_order_path(user_id:current_user.id, id:order.id), class:'btn btn-primary'%> </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  <%else%>
     <p> Tu n'as pas encore passé de commandes </p>
-<%end%>
+  <%end%>
 </div>
-
-
-
