@@ -29,8 +29,9 @@ class CartsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:item])
-    @total -= @item.price
-    @total_cart -=1
+    @cartitems=CartItem.where(cart:@cart)
+    @total -= (@item.price * @cartitems.find_by(item: @item).quantity).to_f
+    @total_cart -= 1
     respond_to do |format|
       format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
       format.js { }
@@ -48,7 +49,7 @@ class CartsController < ApplicationController
     sum = 0
     @cartitems=CartItem.where(cart:@cart)
     @cart.items.each do |item|
-        sum += (item.price.to_f * @cartitems.find_by(item: item).quantity.to_f)
+      sum += (item.price * @cartitems.find_by(item: item).quantity).to_f
     end 
     @total = sum.to_f.round(2)
     @cart.update(total_amount:@total)
