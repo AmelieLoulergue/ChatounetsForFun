@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :image_url, presence: true
   has_many :cart_items, foreign_key: "item_id", dependent: :destroy 
   has_many :carts, through: :cart_items
-  has_many :order_items, foreign_key: 'item_id'
+  has_many :order_items, foreign_key: 'item_id', dependent: :destroy
   has_many :orders, through: :order_items
   has_one_attached :image_url # active storage
 
