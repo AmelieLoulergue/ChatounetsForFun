@@ -17,7 +17,7 @@
                 <div class="card mb-3" style="max-width: 800px;", id="item-<%=item.id%>">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="<%=item.image_url%>" class="img-fluid rounded-start" alt="...">
+                      <%= image_tag item.image_url, alt: 'ceci est un chat', class:"card-img-top" %>
                     </div>
                     <div class="col-md-6">
                       <div class="card-body">
