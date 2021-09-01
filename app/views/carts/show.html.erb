@@ -51,8 +51,7 @@
               </div>
             </div>
             <div class="card-text">
-              <h1>TOTAL : <span id="total-price"><%= @total%></span>€ </h1>
-              <%=link_to "Payer", root_path, class:"btn btn-primary "%>
+              <h1>TOTAL : <span id="total-price"><%= @total%></span>€ <%= link_to "Vider mon panier", user_cart_path(@cart.id), method: :delete, class:"btn btn-danger" %></h1>
             </div>
 
             <%= render 'stripe' %>

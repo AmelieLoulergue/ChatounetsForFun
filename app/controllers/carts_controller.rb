@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_cart
   before_action :set_total
   before_action :set_total_cart
@@ -28,15 +29,23 @@ class CartsController < ApplicationController
   end 
 
   def destroy
-    @item = Item.find(params[:item])
-    @cartitems=CartItem.where(cart:@cart)
-    @total -= (@item.price * @cartitems.find_by(item: @item).quantity).to_f
-    @total_cart -= 1
-    respond_to do |format|
-      format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
-      format.js { }
-    end
-    CartItem.find_by(cart:@cart, item:@item).destroy
+    if params[:item]
+      @item = Item.find(params[:item])
+      @cartitems=CartItem.where(cart:@cart)
+      @total -= (@item.price * @cartitems.find_by(item: @item).quantity).to_f
+      @total_cart -= 1
+      respond_to do |format|
+        format.html { redirect_to user_cart_path(current_user.id, current_user.cart.id) }
+        format.js { }
+      end
+      CartItem.find_by(cart:@cart, item:@item).destroy
+    else
+      @cart.destroy
+      respond_to do |format|
+        format.html { redirect_to user_cart_path(current_user.id, @cart.id) }
+        format.js { }
+      end 
+    end 
   end 
 
   private 

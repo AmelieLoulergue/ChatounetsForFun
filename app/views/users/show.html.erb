@@ -1,5 +1,20 @@
-
-
-<h2>Bienvenue sur ton profil</h2>
-<p> Ton email: <%=@user.email%></p>
-<p><%= link_to 'Editer profil', edit_user_registration_path%></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panier</title>
+  </head>
+  <body>
+    <div class="container"> 
+      <h2>Bienvenue sur ton profil </h2>
+      <h4> Tes informations: </h4>
+      <p> Ton email: <%=@user.email%></p>
+      <p><%= link_to 'Edite ton email ou mot de passe', edit_user_registration_path%></p>
+    </div>
+    <div class="container"> 
+      <h4> Tes commandes: </h4>
+      <p><%= link_to 'Voir mes commandes', user_orders_path(current_user.id)%></p>
+    </div>
+  </body>
+</html>

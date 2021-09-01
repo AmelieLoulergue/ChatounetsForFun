@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Chaton adopté</th>
+            <th scope="col">Montant TTC</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.items.each do |item| %>
+          <tr>
+            <td><%= item.title %></td>
+            <td><%= item.price %> <a> € </a></td>
+            <td> <%=link_to "Tu souhaites racheter ?", item_path(item.id), class:'btn btn-primary'%> </td>
+          </tr>
+        <%end%>
+        </tbody>
+        <tfoot style="font-weight: bold">
+          <td>Montant total :</td>
+          <td> <%= @order.items.sum(:price).round(2) %> <a> € </a> </td>
+        </tfoot>
+      </table>
+    </div>

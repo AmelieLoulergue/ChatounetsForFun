@@ -1,13 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(user:current_user)
   end
 
   # GET /orders/1 or /orders/1.json
   def show
+    puts params
+    @order = Order.find(params[:id])
   end
 
   # GET /orders/new
