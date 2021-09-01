@@ -3,10 +3,11 @@ class CartsController < ApplicationController
   before_action :set_cart
   before_action :set_total
   before_action :set_total_cart
+
   
   def show
+    puts "salut"
     @cartitems=CartItem.where(cart:@cart)
-
     @amount = @cart.total_amount
 
   end
