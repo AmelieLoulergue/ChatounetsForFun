@@ -37,22 +37,22 @@
                         <form action="<%=user_cart_path(user_id:current_user.id, id:current_user.cart.id)%>" method="post">
                           <input type="hidden" name="_method" value="put" />
                           <input type="hidden" name="item" value="<%=item.id%>" />
-                <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
-                <input class="quantity w-50" min="1" name="quantity" value="<%=@cartitems.find_by(item: item).quantity%>" type="number" id="inputQuantity">
-                <button type="submit" onclick="getInputValue();">Modifier la quantité</button>
-              </form>
+
+                          <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+                          <input class="quantity w-50" min="1" name="quantity" value="<%=@cartitems.find_by(item: item).quantity%>" type="number" id="inputQuantity">
+                          <button type="submit" onclick="getInputValue();">Modifier la quantité</button>
+                        </form>
+                    </div>
+                      <%= link_to "Supprimer du panier", user_cart_path(current_user.cart.id, user_id:current_user.id, item:item), :method => :delete, remote: true %> <br/>
+                  </div> 
+                  </div>
+                <%end%>
+                </div>
+              </div>
             </div>
-            <%= link_to "Supprimer du panier", user_cart_path(current_user.cart.id, user_id:current_user.id, item:item), :method => :delete, remote: true %> <br/>
-          </div>
-        </div>
-      <%end%>
-    </div>
-  </div>
-</div>
-<div class="card-text">
-  <h1>TOTAL : <span id="total-price"><%= @total%></span>€ </h1>
-  <%=link_to "Payer", root_path, class:"btn btn-primary "%>
-</div>
+            <div class="card-text">
+              <h1>TOTAL : <span id="total-price"><%= @total%></span>€ <%= link_to "Vider mon panier", user_cart_path(current_user.cart.id), method: :delete, class:"btn btn-danger" %></h1>
+            </div>
 <%= render 'stripe' %>
 <%# La ligne ci-dessous est à retirer à la mise en production finale %>
 <%= link_to "bypass stripe", user_orders_path(user_id:current_user.id), method: :post, class:"btn btn-danger" %>
