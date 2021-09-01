@@ -9,7 +9,7 @@
         <div class="buy-btn">
           <% if user_signed_in? %>
             <% if !current_user.cart.items.include?(item)%>
-              <%=link_to "Je l'adopte !", user_cart_path(current_user.id, current_user.cart.id,  item:item), :method => :put, remote: true, id:item.id, class:"btn btn-primary"%>
+              <%=link_to "Je l'adopte !", user_cart_path(user_id:current_user.id, id:current_user.cart.id,  item:item), :method => :put, remote: true, id:item.id, class:"btn btn-primary"%>
             <%else%>
               <div class="text-primary text-center"> Adopté ! </div>
             <%end%>
