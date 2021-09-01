@@ -18,11 +18,14 @@
           <%end%>
         </div>
         <%# ajouter les boutons Next et Previous  %>
-        <div class="admin-btn">
-          <%= link_to 'détails', item_path(item.id), class:"btn btn-secondary"%>
-          <%= link_to 'Edit',  edit_item_path(item.id), class:"btn btn-primary"%>
-          <%= link_to 'Destroy', item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
-        </div>
+        <% if current_user && (current_user.is_admin?) == true %>
+          <div class="admin-btn">
+            <%= link_to 'détails', item_path(item.id), class:"btn btn-secondary"%>
+            <%= link_to 'Edit',  edit_item_path(item.id), class:"btn btn-primary"%>
+            <%= link_to 'Destroy', item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
+          </div>
+        <%end%>
+
       </div>
     </div>
   </div>
