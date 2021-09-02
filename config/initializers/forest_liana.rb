@@ -1,3 +1,3 @@
-ForestLiana.env_secret = Rails.application.secrets.forest_env_secret_staging
-ForestLiana.auth_secret = Rails.application.secrets.forest_auth_secret_staging
-ForestLiana.application_url = Rails.application.secrets.forest_application_url_staging
+ForestLiana.env_secret = Rails.application.secrets.forest_env_secret
+ForestLiana.auth_secret = Rails.application.secrets.forest_auth_secret
+ForestLiana.application_url = Rails.application.secrets.forest_application_url
