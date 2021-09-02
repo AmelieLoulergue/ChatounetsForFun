@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'items#index'
   devise_for :users
   resources :items
+  get '/static_pages/home', to: 'static_pages#home'
   
   # resources :users, only: [:show, :edit, :update], path:'' do
   #   resources :carts, path: "monpanier"

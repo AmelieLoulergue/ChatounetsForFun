@@ -14,3 +14,10 @@
 //= require activestorage
 //= require_tree .
 //= require bootstrap
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
+function playAudio(url) {
+  new Audio(url).play();
+}
