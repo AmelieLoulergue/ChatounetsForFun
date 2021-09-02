@@ -1,20 +1,4 @@
-<%# <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
-<%# <select name="post[author_id]" id="post_author_id">
-  <option value="" selected="selected">Please select</option>
-  <option value="1">D. Heinemeier Hansson</option>
-  <option value="2">D. Thomas</option>
-  <option value="3">M. Clark</option>
-</select> %>
-<select name="post[category]" id="post_category">
-  <option value="" label="please select">please select</option>
-  <option value="joke">joke</option>
-  <option value="poem">poem</option>
-</select>
-<%= select("post", "category", Category.all, { include_blank: true }) %>
-<%= collection_select(:post, :category_id, Category.all, :name, :name, prompt: true)%>
-
-<%= form_for @categories do |f| %>
-  <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
-
-  <%= f.submit %>
+<%= form_with model: @item, method: :get, local:true do %>
+  <%= collection_select :item, :category_id, Category.all, :id, :name, prompt: true%>
+  <%= submit_tag "Filtrer" %>
 <% end %>
