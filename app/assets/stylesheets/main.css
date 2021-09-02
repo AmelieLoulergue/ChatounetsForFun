@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Allison&display=swap');
+
+:root{
+  --color-primary:fuchsia;
+  --color-secondary:cyan;
+  --degrade-david:linear-gradient(to right, var(--color-primary), var(--color-secondary));
+
+}
+
 *{
   margin:0;
   padding:0;
@@ -8,6 +17,11 @@ body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Allison';
+  font-size: 2rem;
+  color:var(--color-primary);
+  background-image: url(https://www.petparadise.com/files/4859/Pet_Paradise_Cat_Zoom_Image.jpg);
+  background-repeat: repeat;
 }
 
 .grid{
@@ -16,4 +30,36 @@ body{
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
   gap: 2rem;
   padding: 2rem;
+}
+
+.container > * {
+  background:yellow;
+  display: inline-block;
+  transition: 1s all;
+
+}
+
+.container > *:hover{
+  transform: scale(1.5);
+}
+
+.container h2{
+  font-size: 5rem;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.titre-home-page{
+  margin:0 auto;
+  text-align: center;
+}
+
+.titre-home-page > * {
+  font-size: 3rem;
+  color: rgb(0, 38, 255);
 }

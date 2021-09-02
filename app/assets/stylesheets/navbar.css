@@ -1,4 +1,11 @@
 .navbar{
   position:sticky;
   top:0;
+  background-image: var(--degrade-david);
+  box-shadow: 10px 0 10px black;
+  z-index: 10000;
+}
+
+a.navbar-brand{
+  font-size: 4rem;
 }

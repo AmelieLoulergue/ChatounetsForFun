@@ -21,3 +21,32 @@ h5+.card-text{
   width: 100%;
   margin:5px 0;
 }
+
+.card-image {
+  /* border:3px red solid; */
+  height: 10rem;
+}
+
+img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+figure {
+  display: block;
+  margin:0;
+  overflow: hidden  ;
+  /* margin: 1rem auto; */
+  height: 100%;
+  /* width: 10rem; */
+  border: gray 1px solid;
+  border-radius: 3px;
+  /* background: lightgray url('https://i.stack.imgur.com/BVW9D.jpg') no-repeat center center; */
+  background-size: cover;
+  box-shadow: 2px 2px 0 var(--color-primary),
+              3px 3px 4px var(--color-primary),
+              6px 6px 12px 4px rgba(0, 255, 255, 0.226),
+              0 0 14px 4px rgba(0, 255, 255, 0.171)
+}
