@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   mount ForestLiana::Engine => '/forest'
   root 'items#index'
   devise_for :users

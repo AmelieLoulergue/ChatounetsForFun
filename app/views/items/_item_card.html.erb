@@ -1,8 +1,11 @@
-<% @items.each do |item| %>
+<% @items.each do |item| %> 
+<%# <% @items_filtered.each do |item| %> 
+
   <div class="card item-card">
     <%= image_tag item.image_url, alt: 'ceci est un chat', class: "card-img-top" %>
     <div class="card-body">
       <h5 class="card-title"><%= item.title %></h5>
+            <h5 class="card-title"><%= Category.find(item.category_id).name %></h5>
       <p class="card-text"><%= item.description %></p>
       <p class="card-text"><%= item.price %> €</p>
       <div class="card-btn">

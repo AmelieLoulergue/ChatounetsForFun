@@ -7,7 +7,13 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @item = Item.new
+    if params[:item] && search_params
+      @items = Item.where(category_id:search_params[:category_id])
+    else
+      @items = Item.all
+    end
+
   end
 
   # GET /items/1 or /items/1.json
@@ -70,6 +76,10 @@ class ItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def item_params
       params.fetch(:item, {})
+    end
+
+    def search_params
+      params.require(:item).permit(:category_id)
     end
 
     def has_cart?
