@@ -51,9 +51,11 @@ class OrdersController < ApplicationController
     OrderMailer.order_confirmation_email_to_client(@cart).deliver_now
     OrderMailer.order_confirmation_email_to_admin(@cart).deliver_now
     
-    @cart.items.each do |item|
-      OrderItem.create(item:item,order:@order)
-      CartItem.find_by(item:item,cart:@cart).destroy
+    @cart.cart_items.each do |cart_item|
+      OrderItem.create(item:cart_item.item,order:@order,quantity:cart_item.quantity)
+      # OrderItem.create(item:item,order:@order,quantity:item.cart_item.)
+      # CartItem.find_by(item:item,cart:@cart).destroy
+      cart_item.destroy
     end
 
     flash[:success] = "Miaouuu! Votre petit chaton est en route !"
