@@ -597,6 +597,24 @@
         "value": 1000000
       }]
     }, {
+      "field": "image_url",
+      "type": "String",
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": true,
+      "is_read_only": false,
+      "is_required": true,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": null,
+      "inverse_of": null,
+      "widget": null,
+      "validations": [{
+        "message": null,
+        "type": "is present"
+      }]
+    }, {
       "field": "created_at",
       "type": "Date",
       "default_value": null,
@@ -946,21 +964,6 @@
       "inverse_of": null,
       "widget": null,
       "validations": []
-    }, {
-      "field": "quantity",
-      "type": "Number",
-      "default_value": null,
-      "enums": null,
-      "integration": null,
-      "is_filterable": true,
-      "is_read_only": false,
-      "is_required": false,
-      "is_sortable": true,
-      "is_virtual": false,
-      "reference": null,
-      "inverse_of": null,
-      "widget": null,
-      "validations": []
     }],
     "segments": [],
     "actions": []
@@ -1082,21 +1085,6 @@
       "field": "updated_at",
       "type": "Date",
       "default_value": null,
-      "enums": null,
-      "integration": null,
-      "is_filterable": true,
-      "is_read_only": false,
-      "is_required": false,
-      "is_sortable": true,
-      "is_virtual": false,
-      "reference": null,
-      "inverse_of": null,
-      "widget": null,
-      "validations": []
-    }, {
-      "field": "is_admin?",
-      "type": "Boolean",
-      "default_value": "false",
       "enums": null,
       "integration": null,
       "is_filterable": true,
