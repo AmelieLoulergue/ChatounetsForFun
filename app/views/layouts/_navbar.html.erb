@@ -28,14 +28,9 @@
         </div>
         <li><a class="nav-link" href="<%= user_cart_path(user_id:current_user.id, id:current_user.cart.id) %>" ><i class="fas fa-shopping-cart"></i><span class="badge text-success" id="total-cart"><%=@total_cart%></span></a></li>
       <% end %>
-      <div style="max-height:3rem; display:flex;flex-direction:row;">
-        <script style="height:100%;" type="text/javascript"
-   src="http://nekofont.upat.jp/make.cgi?m687571808871808771"></script>
-        <%= image_tag 'https://brendaguarisma.files.wordpress.com/2012/12/mn-cat.gif?w=100&zoom=2', alt: 'ceci est un chat', class: "card-img-top" %>
-      </div>
     </ul>
   </div>
+  <%= image_tag 'bienvenue.png', style:"width:30%", alt: 'ceci est un chat', class: "card-img-top" %>
+  <%= image_tag 'https://brendaguarisma.files.wordpress.com/2012/12/mn-cat.gif?w=100&zoom=2', style:"border: red 3px solid; width:6rem", alt: 'ceci est un chat', class: "card-img-top" %>
 </nav>
-
 <audio id="audio1" src="https://lasonotheque.org/UPLOAD/wav/1890.wav"></audio>
-
