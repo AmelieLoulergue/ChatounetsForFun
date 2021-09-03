@@ -10,18 +10,18 @@
           <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Se connecter/S'inscrire
           </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" onclick="play()">
             <li><%= link_to 'Connexion', new_user_session_path, class:"dropdown-item" %></li>
             <li><%= link_to 'Inscription', new_user_registration_path, class:"dropdown-item" %></li>
           </ul>
         </div>
       <% else %>
         <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" onclick="play1()">
             Mon compte
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><%= link_to 'Mon profil', user_path(current_user.id), class:"dropdown-item" %></li>
+            <li><%= link_to 'Mon profil', user_path(current_user.id), class:"dropdown-item", onclick:"play1()"%></li>
             <li><%= link_to 'Mes commandes', user_orders_path(current_user.id), class:"dropdown-item"%></li>
             <li><%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
           </ul>
@@ -36,3 +36,6 @@
     </ul>
   </div>
 </nav>
+
+<audio id="audio1" src="https://lasonotheque.org/UPLOAD/wav/1890.wav"></audio>
+
