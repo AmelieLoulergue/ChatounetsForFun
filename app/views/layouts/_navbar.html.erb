@@ -1,12 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
   <a class="navbar-brand" href="<%=root_path%>">🐱 Chatounets</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <script type="text/javascript"
-   src="http://nekofont.upat.jp/make.cgi?m687571808871808771">
-</script>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if !user_signed_in? %>
@@ -34,7 +30,7 @@
       <% end %>
     </ul>
   </div>
+  <%= image_tag 'bienvenue.png', style:"width:30%", alt: 'ceci est un chat', class: "card-img-top" %>
+  <%= image_tag 'https://brendaguarisma.files.wordpress.com/2012/12/mn-cat.gif?w=100&zoom=2', style:"border: red 3px solid; width:6rem", alt: 'ceci est un chat', class: "card-img-top" %>
 </nav>
-
 <audio id="audio1" src="https://lasonotheque.org/UPLOAD/wav/1890.wav"></audio>
-
