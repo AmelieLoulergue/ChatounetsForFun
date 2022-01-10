@@ -1,5 +1,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)[![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
 # <center>CHATOUNETS &#128008;</center>
+NB : Le design a été realisé pour ressembler à site web ancien, pour le fun ! Nous ne considérons pas ce projet comme une réussite au niveau design et comme une application utilisable en l'état ❤️
 <br>
 <center>❤️ Bienvenue sur CHATOUNETS ! ❤️</center><br/>
 <center>❤️ LA référence en ligne de la vente de chatons en images ❤️</center>
